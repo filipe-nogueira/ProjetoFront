@@ -1,0 +1,38 @@
+<div class="card">
+  <div class="card-header">
+    <div class="pull-left">
+        <h3>Cadernos</h3>
+    </div>
+    <div>
+        <button type="button" class="btn pull-right btn-primary" routerLink="/cadastrarCadernos">Novo Caderno</button>
+    </div>
+  </div>
+  </div>
+
+  <div class="card-body">
+    <table class="table table-hover" *ngIf="cadernos$ | async">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Cadernos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let caderno of cadernos$ | async">
+          <td>{{ caderno.id }}</td>
+          <td>{{ caderno.fabricante }}</td>
+          <td>
+            <span class="float-right">
+              <button class="btn btn-warning" routerLink="/cadastrarCadernos" (click)="atualizar(caderno)">
+                Atualizar
+              </button>
+              {{' '}}
+              <button class="btn btn-danger" (click)="remover(caderno)" >
+                Remover
+              </button>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

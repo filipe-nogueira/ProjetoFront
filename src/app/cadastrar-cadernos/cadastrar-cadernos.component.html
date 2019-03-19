@@ -1,0 +1,43 @@
+<form #formulario="ngForm" (ngSubmit)= "onSubmit(formulario)">
+  <div class="form-group" [class.has-error]="!fabricante.valid && fabricante.touched" [class.has-feedback]="!fabricante.valid && fabricante.touched">
+    <label class="control-label" for="fabricante">Fabricante</label>
+    <input type="text" class="form-control" id="fabricante" placeholder="Fabricante" name="fabricante" [(ngModel)]="caderno.fabricante" required maxlength="10" #fabricante="ngModel" (blur)="consultaCadastro($event.target.value)">
+    
+    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" *ngIf="!fabricante.valid && fabricante.touched"></span>
+    <span id="fabricante" class="sr-only" *ngIf="!fabricante.valid && fabricante.touched">(Error)</span>
+    <div *ngIf="!fabricante.valid && fabricante.touched"
+      class="alert alert-danger" role="alert">
+      Fabricante é obrigatório
+    </div>
+  </div>
+
+  <div class="form-group" [class.has-error]="!qtdFolhas.valid && qtdFolhas.touched" [class.has-feedback]="!qtdFolhas.valid && qtdFolhas.touched" >
+      <label for="qtdFolhas" class="control-label" >Quantidade de Folhas</label>
+      <input type="number" class="form-control" id="qtdFolhas" placeholder="Quantidade de Folhas" name="qtdFolhas" [(ngModel)]="caderno.qtdFolhas" required maxlength="10" #qtdFolhas="ngModel">
+
+
+      <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" *ngIf="!qtdFolhas.valid && qtdFolhas.touched"></span>
+    <span id="qtdFolhas" class="sr-only" *ngIf="!qtdFolhas.valid && qtdFolhas.touched">(Error)</span>
+    <div *ngIf="!qtdFolhas.valid && qtdFolhas.touched"
+      class="alert alert-danger" role="alert">
+      Quantidade de folhas é obrigatório
+    </div>
+    </div>
+    <hr style="height:2px; border:none; color:#000; background-color:#000; margin-top: 0px; margin-bottom: 0px;"/>
+    <br>
+
+    <div class="form-group" [class.has-error]="!conteudo.valid && conteudo.touched" [class.has-feedback]="!conteudo.valid && conteudo.touched">
+      <label class="control-label" for="conteudo">Conteúdo</label>
+      <input type="text" class="form-control" id="conteudo" placeholder="conteudo" name="conteudo"[(ngModel)]="linha.conteudo" required maxlength="10" #conteudo="ngModel">
+      
+      <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" *ngIf="!conteudo.valid && conteudo.touched"></span>
+      <span id="conteudo" class="sr-only" *ngIf="!conteudo.valid && conteudo.touched">(Error)</span>
+      <div *ngIf="!conteudo.valid && conteudo.touched"
+        class="alert alert-danger" role="alert">
+        Conteudo é obrigatório
+      </div>
+    </div>
+    {{' '}}
+    <button [disabled]="!formulario.valid" type="submit" class="btn btn-primary">Cadastrar</button>
+
+</form>
